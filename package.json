@@ -8,5 +8,8 @@
     "libsodium-wrappers": "^0.8.2",
     "opusscript": "^0.0.8",
     "sodium-native": "^5.0.10"
+  },
+  "scripts": {
+      "start": "node bot.js"
   }
 }
