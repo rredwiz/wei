@@ -15,6 +15,7 @@ import {
     VoiceConnectionStatus,
     entersState,
 } from "@discordjs/voice";
+import assert from "node:assert";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -53,9 +54,11 @@ client.on("messageCreate", async (message) => {
 
 function randomSound() {
     // gets the number of files that start with bot name
-    const files = fs.readdir('./bots/');
-    const pattern = `/^${botConfig.name}`;
+    const files = fs.readdirSync('./audio/');
+    const pattern = new RegExp(`^${botConfig.name}`);
     const numOfFiles = files.filter(file => pattern.test(file)).length;
+
+    assert(numOfFiles > 0); // there must be more than 1 file
 
     const fileNum = Math.floor(Math.random() * numOfFiles) + 1
     return `${botConfig.name}${fileNum}.MP3`;
