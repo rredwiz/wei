@@ -5,7 +5,7 @@ import {
     PermissionFlagsBits,
 } from "discord.js";
 import dotenv from "dotenv";
-dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env", quiet: true });
 
 const clientId = process.env.WEI_CLIENT_ID;
 const guildId = process.env.DISCORD_BOT_GUILD_ID;

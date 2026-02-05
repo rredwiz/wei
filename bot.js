@@ -30,7 +30,7 @@ const client = new Client({
 const TOKEN = botConfig.token;
 
 client.on("clientReady", async () => {
-    console.log("discord bot is logged in");
+    console.log(`${botConfig.name} bot is logged in`);
 });
 
 async function sayString(interaction) {
