@@ -1,7 +1,7 @@
-import fs from 'node:fs';
-import { fork } from 'node:child_process';
+import fs from "node:fs";
+import { fork } from "node:child_process";
 
-const files = fs.readdirSync('./bots/');
+const files = fs.readdirSync("./bots/");
 for (const file of files) {
     fork("./bot.js", {
         env: {

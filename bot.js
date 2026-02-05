@@ -2,6 +2,7 @@ const configPath = process.env.FILE;
 const config = await import(configPath);
 const { botConfig, buildStringPing, buildStringMessage } = config;
 
+import fs from "node:fs";
 import path from "node:path";
 import { sleep } from "./helpers.js";
 import { Client, GatewayIntentBits } from "discord.js";
@@ -51,7 +52,12 @@ client.on("messageCreate", async (message) => {
 });
 
 function randomSound() {
-    const fileNum = Math.floor(Math.random() * 5) + 1
+    // gets the number of files that start with bot name
+    const files = fs.readdir('./bots/');
+    const pattern = `/^${botConfig.name}`;
+    const numOfFiles = files.filter(file => pattern.test(file)).length;
+
+    const fileNum = Math.floor(Math.random() * numOfFiles) + 1
     return `${botConfig.name}${fileNum}.MP3`;
 }
 
