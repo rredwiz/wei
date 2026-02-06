@@ -4,7 +4,7 @@ dotenv.config({ path: ".env", quiet: true });
 export const botConfig = {
     name: "momoi",
     token: process.env.MOMOI_TOKEN,
-    chance: 0.995,
+    chance: 0.999,
     msgSlashName: "momoi",
     voiceSlashName: "momoijoin",
 };
